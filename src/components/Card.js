@@ -8,6 +8,7 @@ import {
 } from '../redux/blog/actionCreator'
 const Card = () => {
   const card = useSelector((state) => state.value)
+  
   const dispatch = useDispatch()
   const categoryHandler = (value) => {
     dispatch(categoryfilter(value))

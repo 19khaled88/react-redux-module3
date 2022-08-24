@@ -4,9 +4,10 @@ import {
   AUTHORNAMEFILTER,
   SEARCH,
   AUTHORIMAGEFILTER,
+  ALLFILTER,
 } from './actionTypes'
 
-export const search = (value) => {
+export const searchfilter = (value) => {
   return {
     type: SEARCH,
     payload: value,
@@ -34,5 +35,11 @@ export const authorimagefilter = (value) => {
   return {
     type: AUTHORIMAGEFILTER,
     payload: value,
+  }
+}
+export const allfilter = (value) => {
+  return {
+    type: ALLFILTER,
+    payload:value
   }
 }

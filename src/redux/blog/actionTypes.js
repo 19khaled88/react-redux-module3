@@ -1,5 +1,6 @@
-export const SEARCH = 'blog/search'
+export const SEARCH = 'blog/searchfilter'
 export const CATEGORYFILTER = 'blog/categoryfilter'
 export const IMAGEFILTER = 'blog/imagefilter'
 export const AUTHORNAMEFILTER = 'blog/authornamefilter'
 export const AUTHORIMAGEFILTER = 'blog/authorimagefilter'
+export const ALLFILTER = 'blog/allfilter'

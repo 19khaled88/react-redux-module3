@@ -1,24 +1,25 @@
-import React from 'react'
+import React, { useCallback, useRef, useState } from 'react'
 import search from '../assets/search.svg'
+import debounce from 'lodash.debounce';
+import { useDispatch } from 'react-redux';
+import {searchfilter} from '../redux/blog/actionCreator'
 const Search = () => {
-  function debounce(func, timeout = 300) {
-    let timer
-    return (...args) => {
-      clearTimeout(timer)
-      timer = setTimeout(() => {
-        func.apply(this, args)
-      }, timeout)
-    }
-  }
-  function saveInput() {
-    console.log('Saving data')
-  }
-  const processChange = debounce(() => saveInput())
+  const [value, setValue] = useState('')
+  const [dbValue, saveToDb] = useState('')
+  const dispatch = useDispatch()
+  const handleChange = event=>{
+    const { value: nextValue } = event.target;
+		setValue(nextValue);
 
+    const debounceSave = debounce(()=>saveToDb(nextValue),1000)
+    debounceSave()
+   dispatch(searchfilter(dbValue))
+    
+  };
   return (
     <div className="border mt-6 border-slate-200 flex items-center w-11/12 lg:w-1/2 mx-auto bg-gray-50 h-12 px-5 rounded-lg text-sm ring-emerald-200">
       <input
-        onKeyUp={processChange}
+        onChange={handleChange}
         className="outline-none border-none bg-gray-50 h-full w-full mr-2"
         type="search"
         name="search"
